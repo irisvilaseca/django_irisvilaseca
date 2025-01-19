@@ -1,0 +1,29 @@
+{% extends 'centre/base.html' %}
+
+{% block title %}Llistat d'Alumnes{% endblock %}
+
+{% block content %}
+    <h2>Llistat d'Alumnes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Cognoms</th>
+                <th>Correu</th>
+                <th>Curs</th>
+                <th>Mòduls Matriculats</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumne in alumnes %}
+            <tr>
+                <td>{{ alumne.nom }}</td>
+                <td>{{ alumne.cognom1 }} {{ alumne.cognom2 }}</td>
+                <td>{{ alumne.correu }}</td>
+                <td>{{ alumne.curs }}</td>
+                <td>{{ alumne.moduls_matriculats }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
