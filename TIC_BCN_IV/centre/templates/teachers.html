@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for professor in professors %}
+<tr>
+    <td>
+        <a href="{% url 'detall_professor' professor.id %}">{{ professor.nom}}</a>
+            
+        </a>
+        <td>{{ professor.cognom1 }} {{ professor.cognom2 }}</td>
+        <td>{{ professor.correu }}</td>
+        <td>{{ professor.curs }}</td>
+        <td>{% if professor.tutor %}Sí{% else %}No{% endif %}</td>
+        <td>{{ professor.moduls_imparteix }}</td>
+        <br>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Detall del Professor</h2>
+    <p><strong>Nom:</strong> {{ professor.nom }}</p>
+    <p><strong>Cognoms:</strong> {{ professor.cognom1 }} {{ professor.cognom2 }}</p>
+    <p><strong>Correu:</strong> {{ professor.correu }}</p>
+    <p><strong>Curs:</strong> {{ professor.curs }}</p>
+    <p><strong>Tutor:</strong> {% if professor.tutor %}Sí{% else %}No{% endif %}</p>
+    <p><strong>Mòduls que imparteix:</strong> {{ professor.moduls_imparteix }}</p>
+    <a href="{% url 'llistat_professors' %}">Tornar al llistat de professors</a>
+{% endblock %}

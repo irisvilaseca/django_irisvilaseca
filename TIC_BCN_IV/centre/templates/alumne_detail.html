@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Detall de l'alumne</h2>
+    <p><strong>Nom:</strong> {{ alumne.nom }}</p>
+    <p><strong>Cognoms:</strong> {{ alumne.cognom1 }} {{ alumne.cognom2 }}</p>
+    <p><strong>Correu:</strong> {{ alumne.correu }}</p>
+    <p><strong>Curs:</strong> {{ alumne.curs }}</p>
+    <p><strong>Mòduls que imparteix:</strong> {{ alumne.moduls_imparteix }}</p>
+    <a href="{% url 'llistat_alumnes' %}">Tornar al llistat de alumnes</a>
+{% endblock %}

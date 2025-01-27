@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for alumne in alumnes %}
+<tr>
+    <td>
+        <a href="{% url 'detall_alumne' alumne.id %}">
+            {{ alumne.nom }}
+        </a>
+    </td>
+    <td>{{ alumne.cognom1 }} {{ alumne.cognom2 }}</td>
+    <td>{{ alumne.correu }}</td>
+    <td>{{ alumne.curs }}</td>
+    <td>{{ alumne.moduls_matriculats }}</td>
+    <br>
+</tr>
+{% endfor %}
+{% endblock %}
