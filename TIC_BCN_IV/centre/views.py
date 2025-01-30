@@ -3,7 +3,7 @@ from .models import Professor, Alumne
 from django.http import Http404
 
 # Simulació d'una llista de professors (en absència d'una base de dades)
-PROFESSORS = [
+'''PROFESSORS = [
     {
         'id': 1,
         'nom': 'Roger',
@@ -83,6 +83,7 @@ ALUMNES = [
         'moduls_matriculats': 'Entorn client, Sistemes',
     },
 ]
+'''
 def get_professor_by_id(professors, id):
     # Filtra la llista per trobar el valor especificat
     filtered = filter(lambda prof: prof["id"] == id, professors)
@@ -95,25 +96,28 @@ def get_alumne_by_id(alumnes,id):
 
 # Llistat de professors
 def llistat_professors(request):
-    return render(request, 'teachers.html', {'professors': PROFESSORS})
+    #return render(request, 'teachers.html', {'professors': PROFESSORS})
+    professors = Professor.objects.all()  # Recuperar tots els estudiants de la base de dades
+    return render(request, 'teachers.html', {'professors': professors})
 
 def detall_professor(request, id):
-    professor = get_professor_by_id(PROFESSORS, id)
+    '''professor = get_professor_by_id(PROFESSORS, id)
     if professor:
         return render(request, 'professor_detail.html', {'professor': professor})
     else:
         # Raise a 404 error if the professor is not found
-        raise Http404(f"El professor amb ID {id} no existeix.")
+        raise Http404(f"El professor amb ID {id} no existeix.")'''
+    professor=get_object_or_404(Professor,id=id)
+    return render(request,'professor_detail.html',{'professor':professor})
 # Llistat d'alumnes
 def llistat_alumnes(request):
-    #alumnes = Alumne.objects.all()
-    return render(request, 'students.html', {'alumnes': ALUMNES})
+    alumnes = Alumne.objects.all()
+    return render(request, 'students.html', {'alumnes': alumnes})
 
 # Detall d'un alumne
 def detall_alumne(request, id):
-    alumne = get_alumne_by_id(ALUMNES, id)
+    '''alumne = get_alumne_by_id(ALUMNES, id)
     if alumne:
-        return render(request, 'alumne_detail.html', {'alumne': alumne})
-    #else:
-        # Raise a 404 error if the alumne is not found
-        #raise Http404(f"L'alumne amb ID {id} no existeix.")
+        return render(request, 'alumne_detail.html', {'alumne': alumne})'''
+    alumne=get_object_or_404(Alumne,id=id)
+    return render(request,'alumne_detail.html',{'alumne':alumne})
